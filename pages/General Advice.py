@@ -162,29 +162,29 @@ if skin_type != "-- Select --":
     if skin_type == "Dry":
         with st.expander("🔹 Sources for Dry Skin"):
             st.markdown("""
-            🔗 [American Academy of Dermatology - Dry Skin Care](https://www.aad.org/public/everyday-care/skin-care-basics/dry/relieve-dry-skin)  
-            🔗 [Cleveland Clinic - Managing Dry Skin](https://my.clevelandclinic.org/health/diseases/17833-dry-skin)  
+            🔗 [American Academy of Dermatology - Dermatologists' top tips for relieving dry skin](https://www.aad.org/public/everyday-care/skin-care-basics/dry/dermatologists-tips-relieve-dry-skin)  
+            🔗 [Cleveland Clinic - Dry Skin](https://my.clevelandclinic.org/health/diseases/16940-dry-skin)  
             """)
 
     elif skin_type == "Oily":
         with st.expander("🔹 Sources for Oily Skin"):
             st.markdown("""
-            🔗 [Harvard Health - Oily Skin](https://www.health.harvard.edu/blog/skin-care-tips-for-people-with-oily-skin-2019041816462)  
-            🔗 [National Library of Medicine - Oily Skin & Acne](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5605216/)  
+            🔗 [Medical News Today - Oily skin: Causes and treatments](https://www.medicalnewstoday.com/articles/321090)  
+            🔗 [National Library of Medicine - Oily Skin & Acne](https://pmc.ncbi.nlm.nih.gov/articles/PMC5605215/)  
             """)
 
     elif skin_type == "Combination":
         with st.expander("🔹 Sources for Combination Skin"):
             st.markdown("""
-            🔗 [Johns Hopkins Medicine - Combination Skin](https://www.hopkinsmedicine.org/health/wellness-and-prevention/skin-care-tips-for-every-type-of-skin)  
+            🔗 [oneskin - Comprehensive Guide to Combination Skin](https://www.oneskin.co/blogs/reference-lab/combination-skin)  
             🔗 [Mayo Clinic - Understanding Skin Type](https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/skin-care/art-20048237)  
             """)
 
     elif skin_type == "Sensitive":
         with st.expander("🔹 Sources for Sensitive Skin"):
             st.markdown("""
-            🔗 [American Academy of Dermatology - Sensitive Skin](https://www.aad.org/public/everyday-care/skin-care-basics/sensitive)  
-            🔗 [Healthline - Ingredients to Avoid](https://www.healthline.com/health/beauty-skin-care/sensitive-skin-care)  
+            🔗 [WebMD - Common Questions About Sensitive Skin](https://www.webmd.com/beauty/sensitive-skin-20-questions)  
+            🔗 [Epiphany Dermatology - Sensitive Skin? Avoid These Products](https://www.epiphanydermatology.com/medical-dermatology/sensitive-skin/)  
             """)
 
     with st.expander("🌍 General Skincare Advice"):
