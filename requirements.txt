@@ -1,6 +1,6 @@
 streamlit
 pandas
-tensorflow-macos==2.16.1
+tensorflow
 numpy
 matplotlib
 scikit-learn
