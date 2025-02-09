@@ -6,15 +6,14 @@ import os
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from keras._tf_keras.keras.models import load_model
 
-# Load pre-trained model
+# Load the pre-trained model
 model = load_model("model_checkpoint.h5")
 
-# Define constants
 IMG_SIZE = 128
 scaler = MinMaxScaler()
 encoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
 
-# Define class names (Modify this with your actual class names)
+# Define class names for the different diagnoses
 class_names = [
     "Actinic keratosis",
     "Basal cell carcinoma",
@@ -25,12 +24,12 @@ class_names = [
     "Seborrheic keratosis"
 ]
 
-# Preprocess the image
+# Preprocessing
 def preprocess_image(image):
-    # Convert the image to RGB (remove alpha channel if it exists)
+    # Convert the image to RGB
     img = image.convert("RGB")
     
-    # Resize and normalize the image
+    # Augmentation
     img = img.resize((IMG_SIZE, IMG_SIZE))
     img = np.array(img) / 255.0  # Normalize
     img = np.expand_dims(img, axis=0)  # Add batch dimension
@@ -40,12 +39,9 @@ def preprocess_image(image):
 def preprocess_tabular_data(age, gender):
     # Normalize the age
     age = scaler.fit_transform(np.array([[age]]))  # Normalize age
-    # One-hot encode the gender
     gender_one_hot = encoder.fit_transform(np.array([[gender]]))  # One-hot encoding for gender
-    
-    # Simulate missing features (assume other features are 0s)
-    additional_features = np.zeros((1, 17))  # Assuming 17 additional features to make total 19
-    
+    # Simulate missing features 
+    additional_features = np.zeros((1, 17)) 
     return np.hstack([age, gender_one_hot, additional_features])
 
 # Prediction function
@@ -54,14 +50,12 @@ def predict_skin_condition(image, age, gender):
     image_data = preprocess_image(image)
     tabular_data = preprocess_tabular_data(age, gender)
     
-    # Make the prediction
     prediction = model.predict([image_data, tabular_data])
     
-    # Get the predicted class
     predicted_class = np.argmax(prediction, axis=1)
     return predicted_class[0]  # Return the predicted class
 
-# Save image and information
+# Save image and information into uploaded_images
 def save_image_and_info(uploaded_file, age, gender):
     upload_path = "uploaded_images"
     if not os.path.exists(upload_path):
@@ -83,7 +77,6 @@ def save_image_and_info(uploaded_file, age, gender):
 
     return image_path, txt_file_path
 
-# Streamlit app
 def main():
     st.title("DermaScan: Dermatological Condition Detection")
     
@@ -103,10 +96,8 @@ def main():
         
         saved_image_path, saved_txt_path = save_image_and_info(uploaded_file, age, gender)
         
-        # Make prediction
         prediction = predict_skin_condition(image, age, gender)
         
-        # Display the prediction result
         predicted_condition = class_names[prediction]
         st.write(f"Prediction: Possible dermatological condition: {predicted_condition}")
 

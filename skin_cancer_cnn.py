@@ -80,13 +80,12 @@ val_data = data_gen.flow_from_dataframe(
     shuffle=True,
 )
 
-# Align class indices
+# Align the class indices
 train_data.class_indices = {
     cls: idx for idx, cls in enumerate(sorted(metadata["dx"].unique()))
 }
 val_data.class_indices = train_data.class_indices
 
-# One-hot encode labels
 labels = pd.get_dummies(metadata["dx"])
 labels = labels.reindex(columns=train_data.class_indices.keys(), fill_value=0).values
 Y_train, Y_val = train_test_split(
@@ -94,7 +93,7 @@ Y_train, Y_val = train_test_split(
 )
 
 
-# Extract images and labels
+# Extract the images and labels
 def extract_images_and_labels(generator):
     images, labels = [], []
     for i in range(len(generator)):
@@ -111,7 +110,7 @@ X_train_tabular, X_val_tabular = (
     tabular_features[len(X_train_images) :],
 )
 
-# Ensure data alignment
+# Ensure that the data is aligned
 min_train_size = min(len(X_train_images), len(X_train_tabular), len(Y_train))
 X_train_images, X_train_tabular, Y_train = (
     X_train_images[:min_train_size],
@@ -125,7 +124,7 @@ X_val_images, X_val_tabular, Y_val = (
     Y_val[:min_val_size],
 )
 
-# Define CNN model
+# Beginning of the CNN Model code
 image_input = Input(shape=(IMG_SIZE, IMG_SIZE, 3), name="image_input")
 x = Conv2D(32, (3, 3), activation="relu")(image_input)
 x = MaxPooling2D(2, 2)(x)
@@ -139,19 +138,18 @@ x = BatchNormalization()(x)
 x = Flatten()(x)
 x = Dense(128, activation="relu")(x)
 
-# Define Tabular model
+# Tabular model
 tabular_input = Input(shape=(tabular_features.shape[1],), name="tabular_input")
 y = Dense(16, activation="relu")(tabular_input)
 y = Dense(32, activation="relu")(y)
 
-# Merge branches
 merged = Concatenate()([x, y])
 merged = Dense(128, activation="relu")(merged)
 merged = Dropout(0.5)(merged)
 output = Dense(len(train_data.class_indices), activation="softmax")(merged)
 model = Model(inputs=[image_input, tabular_input], outputs=output)
 
-# Compile model
+# Compile the model
 model.compile(
     optimizer=Adam(learning_rate=0.0001),
     loss="categorical_crossentropy",
@@ -169,7 +167,7 @@ checkpoint = ModelCheckpoint(
 )
 lr_scheduler = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=3)
 
-# Train model
+# Train the model
 history = model.fit(
     [X_train_images, X_train_tabular],
     Y_train,
@@ -179,7 +177,7 @@ history = model.fit(
     callbacks=[checkpoint, lr_scheduler],
 )
 
-# Evaluate model
+# Evaluate the model, outputting a graph
 test_images, test_labels = extract_images_and_labels(val_data)
 test_tabular_data = X_val_tabular[: len(test_images)]
 test_labels = test_labels[: len(test_images)]

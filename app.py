@@ -1,39 +1,89 @@
 import streamlit as st
 import urllib.parse
 
-# add icon here
 st.set_page_config(
-    page_title="DermaScan",  
-    page_icon="🩺",  
-    layout="centered" 
+    page_title="About DermaScan",
+    page_icon="🩺",
+    layout="centered"
 )
 
-st.title("DermaScan")
 
-st.title("Skin Disease Treatment Locator")
+st.markdown(
+    """
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    
+        .video-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;  
+        }
 
-st.write("### Enter Location")
-user_location = st.text_input("Enter your city (and state if needed)")
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  
+        }
 
-if user_location:
-    formatted_location = urllib.parse.quote_plus(user_location.strip())
-    try:
-        with open("api_key.txt", "r") as file:
-            api_key = file.readline().strip() 
-    except Exception as e:
-        st.error(f"Error reading API key: {e}")
-        api_key = None
+        
+        .overlay {
+            position: absolute; 
+            top: 30%;  
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #333;
+            z-index: 1;
+            width: 80%;
+            max-width: 1200px;
+        }
 
-    if api_key:
-        google_maps_url = f"https://www.google.com/maps/embed/v1/search?key={api_key}&q=dermatology+clinics+near+{formatted_location}"
+        
+        .content-container {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+        }
 
-        st.write("### Map Showing Treatment Centers Nearby")
-        st.components.v1.html(
-            f'<iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen '
-            f'src="{google_maps_url}"></iframe>',
-            height=450,
-        )
+    </style>
 
-        ##hi
-    else:
-        st.error("API Key is missing or incorrect.")
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="https://www.pexels.com/download/video/3191861/" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Title Overlay centered above the video -->
+    <div class="overlay">DermaScan</div>
+
+    <!-- Content area that will scroll -->
+    <div class="content-container">
+        <div class="content">
+    """,
+    unsafe_allow_html=True
+)
+
+
+st.title("About Us")
+st.write("""
+DermaScan is an interactive tool that allows users to input images of their skin and using a deep learning algorithm we here at DermaScan will
+         help identify any potential skin diseases or conditions you may possibly have from here users can simply enter in their location
+         and we will show you the specialists for your condition in the area!
+
+### Features:
+- Identify Potential Skin Conditions/Diseases
+- Find nearby dermatology clinics
+- Interactive map
+- Simple and fast location search
+""")
+
+st.markdown("</div>", unsafe_allow_html=True)
