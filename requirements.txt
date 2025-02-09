@@ -1,2 +1,14 @@
+requirements.txt
 streamlit
 pandas
+tensorflow
+numpy
+matplotlib
+scikit-learn
+opencv-python
+seaborn
+gdown
+os
+kagglehub
+kaggle
+transformations
