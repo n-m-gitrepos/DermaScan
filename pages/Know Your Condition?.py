@@ -15,10 +15,9 @@ if st.button("Find Specialists"):
         formatted_location = urllib.parse.quote_plus(user_location.strip())
 
         try:
-            with open("api_key.txt", "r") as file:
-                api_key = file.readline().strip()
-        except Exception as e:
-            st.error(f"Error reading API key: {e}")
+            api_key = st.secrets["google_maps"]["api_key"]
+        except KeyError:
+            st.error("API Key is missing in the Streamlit secrets.")
             api_key = None
 
         if api_key:
