@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -187,3 +188,5 @@ predicted_classes = np.argmax(predictions, axis=1)
 actual_classes = np.argmax(test_labels, axis=1)
 test_accuracy = np.mean(predicted_classes == actual_classes)
 print(f"Test Accuracy: {test_accuracy:.4f}")
+
+
