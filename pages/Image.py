@@ -20,7 +20,7 @@ def predict_image(image):
     
     return prediction
 
-def save_image(uploaded_file):
+def save_image_and_info(uploaded_file, age, gender):
     upload_path = "uploaded_images"
     if not os.path.exists(upload_path):
         os.makedirs(upload_path)
@@ -28,7 +28,12 @@ def save_image(uploaded_file):
     file_path = os.path.join(upload_path, uploaded_file.name)
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
-    return file_path
+    
+    txt_file_path = os.path.join(upload_path, uploaded_file.name.split('.')[0] + "_info.txt")
+    with open(txt_file_path, "w") as f:
+        f.write(f"Age: {age}\nGender: {gender}")
+
+    return file_path, txt_file_path
 
 def main():
     st.title("DermaScan: Dermatological Condition Detection")
@@ -37,16 +42,26 @@ def main():
     
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
     
+    st.subheader("Enter your Age:")
+    age = st.number_input("Age", min_value=1, max_value=100, value=25, step=1)
+
+    # Gender selection (Male/Female)
+    st.subheader("Select your Gender:")
+    gender = st.radio("Gender", options=["Male", "Female"])
+
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image", use_container_width=True)
         
-        saved_image_path = save_image(uploaded_file)
+        saved_image_path, saved_txt_path = save_image_and_info(uploaded_file, age, gender)
         st.write(f"Image saved at: {saved_image_path}")
+        st.write(f"Information saved at: {saved_txt_path}")
         
         prediction = predict_image(image)
         
         st.write(f"Prediction: {prediction}")
+    
+    
     
 if __name__ == "__main__":
     main()
