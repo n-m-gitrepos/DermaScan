@@ -129,4 +129,41 @@ if skin_type != "-- Select --":
     ✅ Drink **plenty of water** and follow a **healthy diet** for clear skin.  
     """)
 
+    st.markdown("## 📚 Sources")
+
+    if skin_type == "Dry":
+        st.markdown("""
+        **Sources for Dry Skin:**  
+        🔗 [American Academy of Dermatology - Dry Skin Care](https://www.aad.org/public/everyday-care/skin-care-basics/dry/relieve-dry-skin)  
+        🔗 [Cleveland Clinic - Managing Dry Skin](https://my.clevelandclinic.org/health/diseases/17833-dry-skin)  
+        """)
+
+    elif skin_type == "Oily":
+        st.markdown("""
+        **Sources for Oily Skin:**  
+        🔗 [Harvard Health - Oily Skin Causes & Management](https://www.health.harvard.edu/blog/skin-care-tips-for-people-with-oily-skin-2019041816462)  
+        🔗 [National Library of Medicine - Oily Skin & Acne](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5605216/)  
+        """)
+
+    elif skin_type == "Combination":
+        st.markdown("""
+        **Sources for Combination Skin:**  
+        🔗 [Johns Hopkins Medicine - Combination Skin Care](https://www.hopkinsmedicine.org/health/wellness-and-prevention/skin-care-tips-for-every-type-of-skin)  
+        🔗 [Mayo Clinic - Understanding Your Skin Type](https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/skin-care/art-20048237)  
+        """)
+
+    elif skin_type == "Sensitive":
+        st.markdown("""
+        **Sources for Sensitive Skin:**  
+        🔗 [American Academy of Dermatology - Sensitive Skin Care](https://www.aad.org/public/everyday-care/skin-care-basics/sensitive)  
+        🔗 [Healthline - Ingredients to Avoid for Sensitive Skin](https://www.healthline.com/health/beauty-skin-care/sensitive-skin-care)  
+        """)
+
+    # General skincare sources
+    st.markdown("### 🌍 General Skincare Advice")
+    st.markdown("""
+    🔗 [American Academy of Dermatology - Skincare Tips](https://www.aad.org/public/everyday-care/skin-care-basics)  
+    🔗 [NIH - Science of Skincare](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5796020/)  
+    """)
+
 st.success("✨ Healthy skin starts with the right routine! Stay consistent and listen to your skin’s needs. 😊")
