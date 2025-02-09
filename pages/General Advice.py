@@ -112,14 +112,32 @@ if skin_type != "-- Select --":
     # Common mistakes to avoid
     st.subheader("🚫 Common Skincare Mistakes to Avoid")
 
+    
     if skin_type == "Dry":
-        st.write("❌ Using foaming cleansers that strip moisture.\n❌ Skipping moisturizer.\n❌ Taking hot showers that dehydrate skin.")
+        st.markdown("""
+            ❌ Using foaming cleansers that strip moisture.<br>
+            ❌ Skipping moisturizer.<br>
+            ❌ Taking hot showers that dehydrate skin.<br>
+        """, unsafe_allow_html=True)
+    
     elif skin_type == "Oily":
-        st.write("❌ Overwashing, which triggers more oil production.\n❌ Using alcohol-based toners that cause irritation.\n❌ Avoiding moisturizer (even oily skin needs hydration!).")
+        st.markdown("""
+            ❌ Overwashing, which triggers more oil production.<br>
+            ❌ Using alcohol-based toners that cause irritation.<br>
+            ❌ Avoiding moisturizer (even oily skin needs hydration!).<br>
+        """, unsafe_allow_html=True)
     elif skin_type == "Combination":
-        st.write("❌ Using the same routine for entire face.\n❌ Ignoring different needs of T-zone and dry areas.\n❌ Over-exfoliating, which worsens oil and dryness.")
+        st.markdown("""
+            ❌ Using the same routine for entire face.<br>
+            ❌ Ignoring different needs of T-zone and dry areas.<br>
+            ❌ Over-exfoliating, which worsens oil and dryness.<br>
+        """, unsafe_allow_html=True)
     elif skin_type == "Sensitive":
-        st.write("❌ Using too many active ingredients at once.\n❌ Trying harsh exfoliants (like strong retinol or glycolic acid).\n❌ Ignoring patch tests before trying new products.")
+        st.markdown("""
+            ❌ Using too many active ingredients at once.<br>
+            ❌ Trying harsh exfoliants (like strong retinol or glycolic acid).<br>
+            ❌ Ignoring patch tests before trying new products.<br>
+        """, unsafe_allow_html=True)
 
     # Final advice
     st.subheader("📌 Final Tips")
@@ -129,41 +147,43 @@ if skin_type != "-- Select --":
     ✅ Drink **plenty of water** and follow a **healthy diet** for clear skin.  
     """)
 
+
+
+
     st.markdown("## 📚 Sources")
 
     if skin_type == "Dry":
-        st.markdown("""
-        **Sources for Dry Skin:**  
-        🔗 [American Academy of Dermatology - Dry Skin Care](https://www.aad.org/public/everyday-care/skin-care-basics/dry/relieve-dry-skin)  
-        🔗 [Cleveland Clinic - Managing Dry Skin](https://my.clevelandclinic.org/health/diseases/17833-dry-skin)  
-        """)
+        with st.expander("🔹 Sources for Dry Skin"):
+            st.markdown("""
+            🔗 [American Academy of Dermatology - Dry Skin Care](https://www.aad.org/public/everyday-care/skin-care-basics/dry/relieve-dry-skin)  
+            🔗 [Cleveland Clinic - Managing Dry Skin](https://my.clevelandclinic.org/health/diseases/17833-dry-skin)  
+            """)
 
     elif skin_type == "Oily":
-        st.markdown("""
-        **Sources for Oily Skin:**  
-        🔗 [Harvard Health - Oily Skin Causes & Management](https://www.health.harvard.edu/blog/skin-care-tips-for-people-with-oily-skin-2019041816462)  
-        🔗 [National Library of Medicine - Oily Skin & Acne](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5605216/)  
-        """)
+        with st.expander("🔹 Sources for Oily Skin"):
+            st.markdown("""
+            🔗 [Harvard Health - Oily Skin](https://www.health.harvard.edu/blog/skin-care-tips-for-people-with-oily-skin-2019041816462)  
+            🔗 [National Library of Medicine - Oily Skin & Acne](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5605216/)  
+            """)
 
     elif skin_type == "Combination":
-        st.markdown("""
-        **Sources for Combination Skin:**  
-        🔗 [Johns Hopkins Medicine - Combination Skin Care](https://www.hopkinsmedicine.org/health/wellness-and-prevention/skin-care-tips-for-every-type-of-skin)  
-        🔗 [Mayo Clinic - Understanding Your Skin Type](https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/skin-care/art-20048237)  
-        """)
+        with st.expander("🔹 Sources for Combination Skin"):
+            st.markdown("""
+            🔗 [Johns Hopkins Medicine - Combination Skin](https://www.hopkinsmedicine.org/health/wellness-and-prevention/skin-care-tips-for-every-type-of-skin)  
+            🔗 [Mayo Clinic - Understanding Skin Type](https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/skin-care/art-20048237)  
+            """)
 
     elif skin_type == "Sensitive":
-        st.markdown("""
-        **Sources for Sensitive Skin:**  
-        🔗 [American Academy of Dermatology - Sensitive Skin Care](https://www.aad.org/public/everyday-care/skin-care-basics/sensitive)  
-        🔗 [Healthline - Ingredients to Avoid for Sensitive Skin](https://www.healthline.com/health/beauty-skin-care/sensitive-skin-care)  
-        """)
+        with st.expander("🔹 Sources for Sensitive Skin"):
+            st.markdown("""
+            🔗 [American Academy of Dermatology - Sensitive Skin](https://www.aad.org/public/everyday-care/skin-care-basics/sensitive)  
+            🔗 [Healthline - Ingredients to Avoid](https://www.healthline.com/health/beauty-skin-care/sensitive-skin-care)  
+            """)
 
-    # General skincare sources
-    st.markdown("### 🌍 General Skincare Advice")
-    st.markdown("""
-    🔗 [American Academy of Dermatology - Skincare Tips](https://www.aad.org/public/everyday-care/skin-care-basics)  
-    🔗 [NIH - Science of Skincare](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5796020/)  
-    """)
+    with st.expander("🌍 General Skincare Advice"):
+        st.markdown("""
+        🔗 [AAD - Skincare Tips](https://www.aad.org/public/everyday-care/skin-care-basics)  
+        🔗 [NIH - Science of Skincare](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5796020/)  
+        """)
 
 st.success("✨ Healthy skin starts with the right routine! Stay consistent and listen to your skin’s needs. 😊")
