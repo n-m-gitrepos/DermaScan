@@ -1,14 +1,12 @@
-requirements.txt
 streamlit
 pandas
-tensorflow
+tensorflow-macos
 numpy
 matplotlib
 scikit-learn
 opencv-python
 seaborn
 gdown
-os
-kagglehub
 kaggle
+kagglehub
 transformations
