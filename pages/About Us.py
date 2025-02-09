@@ -72,11 +72,9 @@ st.markdown(
 )
 
 
-
-
 st.title("About Us")
 st.write("""
-DermaScan is an interactive tool that allows users to input images of their skin and using a deep learning algorithm we here at DeepSeek will
+DermaScan is an interactive tool that allows users to input images of their skin and using a deep learning algorithm we here at DermaScan will
          help identify any potential skin diseases or conditions you may possibly have from here users can simply enter in their location
          and we will show you the specialists for your condition in the area!
 
